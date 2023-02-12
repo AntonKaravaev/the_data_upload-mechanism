@@ -1,0 +1,17 @@
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+ObjectOutputStream oos = new ObjectOutputStream(baos);
+oos.writeObject(rows.get(0));
+int size = baos.toByteArray().length;
+System.out.println("SIZE of one chunk = " + size);
+
+
+Стандартный батч сайз:
+spring.kafka.producer.batch-size=16384
+SIZE of one chunk (one Offer) = 134
+SIZE of 100 chunks = 3257
+SIZE of 400 chunks = 12557
+SIZE of 1000 chunks = 15657
+
+
+По-хорошему нужно попробовать разные батчи, чтобы определить оптимальный по перформансу.
+На данном этапе поставлю в два раза больше для надежности 32768.

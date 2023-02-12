@@ -1,0 +1,15 @@
+docker ps
+docker exec -it ea5a707171a6 bash
+psql -h localhost -p 5432 -U root -d test_db
+
+
+create table offer (
+offer_id numeric(19, 0) not null,
+exposable numeric(1, 0) not null,
+client_fio varchar(100)
+);
+
+\dt - show tables
+\d offer
+
+

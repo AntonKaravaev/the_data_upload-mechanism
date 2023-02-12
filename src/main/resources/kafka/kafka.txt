@@ -1,0 +1,16 @@
+docker-compose up -d
+
+nc -z localhost 22181
+nc -z localhost 29092
+
+Проверить текущие топики:
+docker exec kafka_for_test kafka-topics --list --bootstrap-server localhost:29092
+
+
+
+Создать топик
+docker exec -it 28177e84d7c5 bash
+kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 1 --topic update_cache
+
+
+
